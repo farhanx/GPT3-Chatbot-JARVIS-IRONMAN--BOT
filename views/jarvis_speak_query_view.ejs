@@ -1,0 +1,51 @@
+<!--
+ * @Description: This example demonstrate how user can use his webpage to send a question using microphone and recieve answer in sound from the chatgpt3 
+ * @author Farhan Hameed Khan  
+ * @date 20-Mar-2023
+ * @version 1.0.0
+ * @link https://github.com/farhanx/chatgpt3bot
+ * @link https://www.linkedin.com/in/farhanhk/
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>ChatGPT3 Voice Enabled Bot using APIs</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    
+    <div class="container">
+        <p id="transcription"></p>
+          <div class="form-group">
+            <div class="col-sm-10">
+
+               <h1>Ask the Chatgpt using your Microphone</h1>
+               <br>
+                <label for="audio-input-devices">Select Best Audio Input Device:</label>
+                <select id="audio-input-devices"></select>
+                <br><br>
+                
+                  <button id="start-recording">Start Asking</button>
+                  <button id="stop-recording" disabled>Stop Asking</button>
+                  <h5>Audio player will play your recorded voice just for testing purpose</h5>
+                  <div id="audio-player"></div>
+
+                  <div id='loadingmessage' style='display:none'>
+                    <img src='img/loader.gif'/> <br> Loading
+                  </div>
+
+            </div>
+          </div>
+      </div>
+
+      <script src="js/jarvis_speak_query.js"></script>
+
+</body>
+</html>
+      

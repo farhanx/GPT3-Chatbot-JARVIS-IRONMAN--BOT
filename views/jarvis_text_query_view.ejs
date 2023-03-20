@@ -1,0 +1,66 @@
+<!--
+ * @Description: This example demonstrate How to use text query to chatgpt3 using text. In the response , interface will recieve a text as an answer or voice which can be heard (Prototype)
+ * @author Farhan Hameed Khan  
+ * @date 20-Mar-2023
+ * @version 1.0.0
+ * @link https://github.com/farhanx/chatgpt3bot
+ * @link https://www.linkedin.com/in/farhanhk/
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="js/jarvis_text_query.js"></script>
+
+
+</head>
+<body>
+    
+    <div class="container">
+        <h2>JARVIS (Send text and get response answer in Sound or Text)</h2>
+        <h5> In this example you can query to chatgpt and it will return the transcript in MP3 Audio voice or Text. </h5>
+        <form class="form-horizontal" method="post" id="sendText">
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="textstuff">Query:</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" placeholder="Write some text" id="textstuff"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">        
+              <input type="radio"  name="medium" value="voice" checked>
+              <label for="withvoice">With Voice</label><br>
+                <input type="radio" name="medium" value="text" >
+              <label for="withtexts">With Text</label><br>
+            </div>
+          </div>
+         
+       
+          <div class="form-group">        
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="textstuff">Answer:</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" placeholder="Write some text" id="answer" readonly style="color:dimgrey" rows="4"></textarea>
+            </div>
+          </div>
+         
+
+        </form>
+      </div>
+      
+</body>
+</html>
+      
