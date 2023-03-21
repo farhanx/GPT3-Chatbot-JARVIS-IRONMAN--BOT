@@ -1,93 +1,88 @@
+# Chatbot GPT3 (JARVIS on WEBPAGE)
+
+![](title.png)
+
+
+  <b> This is a simple web project where I have created a chatbot who can listen your query through your microphone. Then it replies back in the audio so you dont need to read any text.</b>
+
+Check the running demo : https://www.youtube.com/watch?v=pSoztHpyrM4 
+
+    Following APIS are used in order to create this project 
+    a - Chat GPT3.5 API
+    b - Google Cloud Text to Speech API
+    c - Google Cloud Speech to Text API
+    d - Three.js for special effects of a 3d space bot
+
+<h1> Register with OPEN AI </h1> 
+First, you will need to sign up for an API key from the OpenAI website. 
+
+1) You can do this by visiting https://platform.openai.com/ . 
+
+2) Then on top right you will see your username click this and then you will find "View API Keys". 
+
+3) Incase if you dont find keys option on your account then you have to add your billing account. As per 22-Mar-2023 open AI doesnt provide free API keys for your project. Therefore you have to register your credit card on https://platform.openai.com/account/billing/overview  
+
+4) Now visit "View API Keys" or simply visit https://platform.openai.com/account/api-keys . 
+
+5) Click create new API Keys. 
+
+This API key will be used in our NodeJS project,
+
+<h1> Register with Google Cloud</h1> 
+
 1. Create a new Google Cloud Platform project or select an existing one in the Google Cloud Console.
 
 2. Enable the Cloud Text-to-Speech API for your project in the Google Cloud Console.
 
-3. Create a service account in the Google Cloud Console and download the private key as a JSON file. This file contains the credentials you will use to authenticate your API requests.
+3. Enable the Cloud Speech-to-Text API for your project in the Google Cloud Console.
 
-4. Install the Google Cloud client library for Node.js by running the following command in your terminal:
+4. Create a service account in the Google Cloud Console.
 
-    npm install --save @google-cloud/text-to-speech
+5. Click Add Keys select JSON file. This file contains the credentials you will use to authenticate your API requests from nodejs application to the google cloud. 
 
-5. Set up the authentication for the client library by specifying the path to the JSON file with your service account credentials as follows:
+6. Download the key file and rename it as aserviceaccount.json
 
-    const textToSpeech = require('@google-cloud/text-to-speech');
-    const client = new textToSpeech.TextToSpeechClient({
-     keyFilename: '/path/to/service-account.json',
-    });
+<h1> Pull the a NodeJS Application</h1> 
 
-6. Call the synthesizeSpeech method of the TextToSpeechClient to generate the audio file for the text you want to convert to speech, as follows:
+1. Pull the https://github.com/farhanx/chatgpt3Bot repo locally.
 
-    const request = {
-    input: {text: 'Hello, world!'},
-    voice: {languageCode: 'en-US', ssmlGender: 'NEUTRAL'},
-    audioConfig: {audioEncoding: 'MP3'},
-    };
+2. Install all dependent libraries as per mentioned in package.json (If you know how to code in NODE.JS you can do it easily)
 
-    const [response] = await client.synthesizeSpeech(request);
+Otherwise Following are the dependent librairies which must be installed
 
-7. Save the audio file to a location of your choice. Here's an example of how to save the file to disk:
+   > npm install --save  multer
 
-    const fs = require('fs');
-    fs.writeFile('output.mp3', response.audioContent, 'binary', err => {
-    if (err) {
-        console.error('Error saving audio file:', err);
-    } else {
-        console.log('Audio file saved!');
-    }
-    });
+   > npm install @google-cloud/speech
 
-That's it! You should now have an MP3 audio file of the text you provided. You can also customize the voice, pitch, and speed of the generated audio by adjusting the voice field of the request object. For more information and examples, refer to the Google Cloud Text-to-Speech API documentation.
+   > npm install openai
+
+   > npm install dotenv 
+
+   > npm install --save @google-cloud/text-to-speech
+
+   > npm i ejs
+
+   > npm i --save-dev nodemon
+
+   > npm i express
 
 
-make sure to install npm install dotenv 
+3.  Create .env file and add following 
+GOOGLE_APPLICATION_CREDENTIALS="serviceaccount.json"
+OPENAI_API_KEY="[Your OPEN AI KEY]"
 
+4. Add the serviceaccount.json file inside the project. 
 
-sing the ChatGPT API in a Node.js application is fairly simple. You can follow the steps below:
+5. Create two folders "upload" and "output" 
 
-First, you will need to sign up for an API key from the OpenAI website. You can do this by visiting https://beta.openai.com/signup/ and following the instructions provided.
+6. open the terminal and write this command
 
-Once you have your API key, you can install the axios package using npm. Run the following command in your terminal:
+> npm run devStart   
 
-Copy code
-npm install axios
-In your Node.js application, you can use the axios package to send requests to the ChatGPT API. Here is an example of how to send a request to the API to generate a response:
+7. Write http://localhost:40001/ on the browser
 
-javascript
-Copy code
-const axios = require('axios');
+8. Make sure to give permission from your browser for the microphone and sound
 
-const prompt = "Hello, how are you?";
+9. Select approperiate audio driver and ask the query and enjoy.
 
-axios({
-  method: 'post',
-  url: 'https://api.openai.com/v1/engines/davinci-codex/completions',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${YOUR_API_KEY}`,
-  },
-  data: {
-    prompt,
-    max_tokens: 60,
-    temperature: 0.7,
-    n: 1,
-    stop: '\n',
-  },
-})
-.then(response => {
-  console.log(response.data.choices[0].text);
-})
-.catch(error => {
-  console.log(error);
-});
-In the code above, replace YOUR_API_KEY with your actual API key. You can also customize the prompt, max_tokens, temperature, n, and stop parameters to control the response generated by the API.
-
-That's it! With these steps, you should now be able to use the ChatGPT API in your Node.js application.
-
-
-
-Regenerate response
-
-
-
-
-
+   
